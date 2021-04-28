@@ -3,9 +3,10 @@ package subarithservice
 import (
 	"context"
 	"errors"
-	"github.com/semrush/zenrpc/v2"
-	"github.com/semrush/zenrpc/v2/testdata/model"
 	"math"
+
+	"github.com/IlyushaZ/zenrpc/v3"
+	"github.com/IlyushaZ/zenrpc/v3/testdata/model"
 )
 
 type SubArithService struct{} //zenrpc

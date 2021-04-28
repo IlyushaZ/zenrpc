@@ -3,14 +3,16 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/semrush/zenrpc/v2/parser"
 	"go/format"
 	"os"
+	"path/filepath"
 	"time"
+
+	"github.com/IlyushaZ/zenrpc/v3/parser"
 )
 
 const (
-	version = "2.1.1"
+	version = "3.0.0"
 
 	openIssueURL = "https://github.com/semrush/zenrpc/issues/new"
 	githubURL    = "https://github.com/semrush/zenrpc"
@@ -27,8 +29,8 @@ func main() {
 		filename = os.Getenv("GOFILE")
 	}
 
-	if len(filename) == 0 {
-		fmt.Fprintln(os.Stderr, "File path is empty")
+	if filename == "" {
+		_, _ = fmt.Fprintln(os.Stderr, "File path is empty")
 		os.Exit(1)
 	}
 
@@ -41,7 +43,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	outputFileName := pi.OutputFilename()
+	outputFileName := filepath.Join(pi.Dir, "zenrpc.go")
 
 	// remove output file if it already exists
 	if _, err := os.Stat(outputFileName); err == nil {

@@ -1,8 +1,9 @@
 package subarithservice
 
 import (
-	"github.com/semrush/zenrpc/v2/testdata/objects"
 	"time"
+
+	"github.com/IlyushaZ/zenrpc/v3/testdata/objects"
 )
 
 type Point struct {
